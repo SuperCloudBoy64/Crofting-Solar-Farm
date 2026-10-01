@@ -127,20 +127,20 @@ body::after{ right: 0; }
 
 
 /* ===== NAVBAR ===== */
-#navbar{
+#navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   position: fixed;
-  top: 45px;
+  top: 46px;
   left: 0;
   right: 0;
-  
+
   height: 80px;
   padding: 0 40px;
-  margin-top: 10px;
-  
+  margin: 0;
+
   z-index: 1000;
 
   background: var(--nav-bg);
@@ -149,6 +149,7 @@ body::after{ right: 0; }
 
   transition: background-color 0.4s ease;
 }
+
 
 .logo1{
   height: 80px;
@@ -202,8 +203,9 @@ body::after{ right: 0; }
   align-items: center;
   z-index: 1100;
   background: #333;
-  padding: 5px;
+  padding: 6px;
   margin-bottom: 5px;
+  margin-top: 2px;
 }
 
 .navlinks-two {
@@ -659,6 +661,7 @@ body.dark-mode .about-3 p {
   background-color: aqua;
   border-radius: 40px;
   width: 100%;
+  padding: 10px;
 }
 
 .about p {
@@ -669,43 +672,80 @@ body.dark-mode .about-3 p {
   width: 750px;
   height: auto;
   border-radius: 40px;
+  box-shadow: rgba(17, 12, 46, 0.35) 0px 48px 100px 0px;
+
 }
 
-.about-1, .about-2, .about-3 {
-   max-width: 100%;
-    margin: 50px auto;
-    padding: 40px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 50px;
-    text-align: center;
-    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-    border-radius: 40px;
-    justify-content: center;
+
+.about-1,
+.about-2,
+.about-3 {
+  width: 90%;
+  max-width: 1500px;
+  margin: 50px auto;
+  padding: 40px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 50px;
+
+  border-radius: 40px;
 }
 
+
+/* Text */
+.about-1-t,
+.about-2-t,
+.about-3-t {
+  width: 95%;
+  text-align: center;
+}
+
+/* Images */
+.about-1-p,
+.about-2-p,
+.about-3-p {
+  width: 100%;
+}
+
+/* Images themselves */
+.about-1-p img,
+.about-2-p img,
+.about-3-p img {
+  width: 100%;
+  max-width: 750px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 30px;
+}
+
+
+/* Section 1: text | image */
 .about-1-t {
-  grid-column: 1 / 3;
+  grid-column: 1;
 }
 
 .about-1-p {
-  grid-column: 3;
-}
-
-.about-2-p {
   grid-column: 2;
 }
 
+/* Section 2: image | text */
+.about-2-p {
+  grid-column: 1;
+}
+
 .about-2-t {
-  grid-column: 3 / 5;
+  grid-column: 2;
+}
+
+/* Section 3: text | image */
+.about-3-t {
+  grid-column: 1;
 }
 
 .about-3-p {
-  grid-column: 3;
-}
-
-.about-3-t {
-  grid-column: 1 / 3;
+  grid-column: 2;
 }
 
 
@@ -1796,29 +1836,44 @@ video {
     line-height: 1.6;
   }
 
-  .about img {
-    width: 100%;
-    height: auto;
-  }
+  @media (min-width: 701px) and (max-width: 1024px) {
 
   .about-1,
   .about-2,
   .about-3 {
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 25px;
     padding: 30px;
-    margin: 35px auto;
-    align-items: center;
   }
 
-  .about-1-t,
-  .about-2-t,
-  .about-3-t,
+  /* Put image first */
   .about-1-p,
   .about-2-p,
   .about-3-p {
-    grid-column: auto;
+    order: 1;
+    width: 100%;
   }
+
+  /* Put text underneath */
+  .about-1-t,
+  .about-2-t,
+  .about-3-t {
+    order: 2;
+    width: 100%;
+  }
+
+  .about img {
+    width: 100%;
+    max-width: 700px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 30px;
+  }
+
+}
+
 
 
   /* -----------------------------
@@ -1854,29 +1909,44 @@ video {
     font-size: 0.9rem;
   }
 
-  .tech-wrapper {
-    width: 94%;
-    min-height: 650px;
+    .tech-wrapper {
+    min-height: 750px;
   }
 
   .tech-slides {
-    min-height: 650px;
+    min-height: 750px;
   }
 
   .tech-slide {
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     gap: 25px;
-    padding: 45px 45px 70px;
+    padding: 40px 60px 120px;
   }
 
   .tech-slide img {
     width: 100%;
-    height: 400px;
+    max-width: 700px;
+    height: 350px;
+    object-fit: contain;
+    border-radius: 30px;
   }
 
   .tech-content {
-    padding: 25px;
+    width: 100%;
+    max-width: 700px;
+    padding: 30px;
+    text-align: center;
   }
+
+  .tech-dots {
+    bottom: 25px;
+  }
+
+
+
 
   .tech-content i {
     font-size: 2.8rem;
